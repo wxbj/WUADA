@@ -78,7 +78,7 @@ def convert_npy_to_png(input_dir, output_dir):
             u8 = to_uint8(gray)
             Image.fromarray(u8, mode="L").save(out_path)
 
-# 用法示例：
+# Demo：
 # convert_npy_to_png("PA_mr2ct_u3plus_r101_RUSH-ADA", "PA_mr2ct_u3plus_r101_RUSH-ADA_png")
 # convert_npy_to_png("PA_ct2mr_u3plus_r101_RUSH-ADA", "PA_ct2mr_u3plus_r101_RUSH-ADA_png")
 convert_npy_to_png("RA_ct2mr_u3plus_r101_RUSH-ADA", "RA_ct2mr_u3plus_r101_RUSH-ADA_png")
