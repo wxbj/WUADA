@@ -1,0 +1,28 @@
+MODEL:
+  NAME: "UNet3plus_resnet101"
+  NUM_CLASSES: 5
+  DEVICE: "cuda:0"
+INPUT:
+  SOURCE_INPUT_SIZE_TRAIN: (256, 256)
+  TARGET_INPUT_SIZE_TRAIN: (256, 256)
+  INPUT_SIZE_TEST: (256, 256)
+  SRC_PIXEL_MEAN: [0.069,0.069,0.068]
+  SRC_PIXEL_STD: [1.016,1.015,1.015]
+  TGT_PIXEL_MEAN: [-1.067,-1.068,-1.069]
+  TGT_PIXEL_STD: [1.134,1.134,1.133]
+DATASETS:
+  DATASET_ROOT: "datasets/MM-WHS"
+  SOURCE_TRAIN_DIR: "mr"
+  SOURCE_TRAIN_LIST: "mr_train_list.txt"
+  SOURCE_TRAIN_label_info: "mr_label_info.p"
+  TARGET_TRAIN_DIR: "ct"
+  TARGET_TRAIN_LIST: "ct_train_list.txt"
+  TEST_DIR: "ct"
+  TEST_LIST: "ct_test_list.txt"
+  VAL_DIR: "ct"
+  VAL_LIST: "ct_val_list.txt"
+ACTIVE:
+  RATIO: 0.045
+  RANDOM_RATIO: 0.005
+PROCTITLE: "WUADA-RA-MR2CT"
+OUTPUT_DIR: "results/RA_mr2ct_u3plus_r101_WUADA"

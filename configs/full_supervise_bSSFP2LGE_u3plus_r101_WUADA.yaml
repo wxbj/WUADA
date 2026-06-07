@@ -1,0 +1,23 @@
+MODEL:
+  NAME: "UNet3plus_resnet101"
+  NUM_CLASSES: 4
+  DEVICE: "cuda:0"
+INPUT:
+  SOURCE_INPUT_SIZE_TRAIN: (192, 192)
+  TARGET_INPUT_SIZE_TRAIN: (192, 192)
+  INPUT_SIZE_TEST: (192, 192)
+  SRC_PIXEL_MEAN: [-0.023,-0.021,-0.020]
+  SRC_PIXEL_STD: [1.011,1.011,1.011]
+  TGT_PIXEL_MEAN: [-0.023,-0.021,-0.020]
+  TGT_PIXEL_STD: [1.011,1.011,1.011]
+DATASETS:
+  DATASET_ROOT: "datasets/MS-CMRSeg"
+  SOURCE_TRAIN_DIR: "LGE"
+  SOURCE_TRAIN_LIST: "LGE_train_list.txt"
+  SOURCE_TRAIN_label_info: "LGE_label_info.p"
+  TEST_DIR: "LGE"
+  TEST_LIST: "LGE_test_list.txt"
+  VAL_DIR: "LGE"
+  VAL_LIST: "LGE_val_list.txt"
+PROCTITLE: "WUADA-bSSFP2LGE-full_supervise"
+OUTPUT_DIR: "results/full_supervise_bSSFP2LGE_u3plus_r101_WUADA"
