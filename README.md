@@ -125,10 +125,10 @@ Below are two examples of how to run the training and testing pipelines:
 
 | fold | Train      | Val   | Test |
 |------|------------|-------|------|
-| 1    | 16-45      | 6-15  | 1-5  |
-| 2    | 6-15，26-45 | 16-25 | 1-5  |
-| 3    | 6-25，36-45 | 26-35 | 1-5  |
-| 4    | 6-35       | 36-45 | 1-5  |
+| 1    | 11-45      | 6-10  | 1-5  |
+| 2    | 6-10，16-45 | 11-15 | 1-5  |
+| 3    | 6-15，21-45 | 16-20 | 1-5  |
+| 4    | 6-20，26-45 | 21-25 | 1-5  |
 
 ## 6. Model Zoo
 We will put our model checkpoints
