@@ -1,8 +1,10 @@
 # Active Domain Adaptation via Structural-Prior Warm-Start and Region Uncertainty for Cross-Modality Cardiac Image Segmentation
 
-***
-The remaining content will be supplemented after acceptance; here is the general process for project reproduction.
+[![Paper](https://img.shields.io/badge/Paper-Link-blue)](https://doi.org/10.1016/j.bspc.2026.110775)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+## 📢 News
+- **[2026-06]** Our paper has been accepted! The complete training and testing code is now released.
 # Overview
 
 ***
@@ -169,11 +171,10 @@ here [[Google Drive](https://drive.google.com/drive/folders/1xE2yAw1KTx2-9CUIXYU
 
 ## 6. Train and test
 
-- The 'ct_to-umr. sh' under 'scripts' stores the scripts for running all the models in the appeal.
+- The 'scripts. sh' under 'scripts' stores the scripts for running all the models in the appeal.
 
 # Acknowledgements
 
 ***
 This project is based on the open-source project: [RIPU](https://github.com/BIT-DA/RIPU). We thank their authors for
-making the source
-code publically available.
+making the source  code publically available.
