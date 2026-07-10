@@ -11,3 +11,4 @@ def build_feature_extractor(cfg):
 def build_classifier(cfg):
     classifier = UNet3PlusDecoder(num_classes=cfg.MODEL.NUM_CLASSES, encoder_channels=[64, 256, 512, 1024, 2048])
     return classifier
+

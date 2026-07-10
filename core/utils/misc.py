@@ -56,3 +56,4 @@ def get_gray_image(npimg, number_class):
         gray_img[npimg == class_id] = gray_value
 
     return Image.fromarray(gray_img, mode='L')
+

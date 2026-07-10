@@ -66,3 +66,4 @@ class DatasetCatalog(object):
                 'selected': torch.tensor([0], dtype=torch.bool),
             }
             torch.save(indicator, path2indicator)
+

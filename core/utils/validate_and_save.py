@@ -145,3 +145,4 @@ def validate_and_save(cfg, iteration, feature_extractor, classifier,
 
     feature_extractor.train()
     classifier.train()
+

@@ -25,3 +25,4 @@ class UncertaintyAwareCELoss(nn.Module):
         weighted_loss = (weights * ce_loss).sum() / (weights.sum() + 1e-10)
 
         return weighted_loss
+

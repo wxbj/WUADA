@@ -79,8 +79,8 @@ def convert_npy_to_png(input_dir, output_dir):
             Image.fromarray(u8, mode="L").save(out_path)
 
 # Demo：
-# convert_npy_to_png("PA_mr2ct_u3plus_r101_RUSH-ADA", "PA_mr2ct_u3plus_r101_RUSH-ADA_png")
+convert_npy_to_png("PA_mr2ct_u3plus_r101_RUSH-ADA", "PA_mr2ct_u3plus_r101_RUSH-ADA_png")
 # convert_npy_to_png("PA_ct2mr_u3plus_r101_RUSH-ADA", "PA_ct2mr_u3plus_r101_RUSH-ADA_png")
-convert_npy_to_png("RA_ct2mr_u3plus_r101_RUSH-ADA", "RA_ct2mr_u3plus_r101_RUSH-ADA_png")
+# convert_npy_to_png("RA_ct2mr_u3plus_r101_RUSH-ADA", "RA_ct2mr_u3plus_r101_RUSH-ADA_png")
 # convert_npy_to_png("RA_mr2ct_u3plus_r101_RUSH-ADA", "RA_mr2ct_u3plus_r101_RUSH-ADA_png")
 # convert_npy_to_png("PA_bssfp2lge_u3plus_r101_RUSH-ADA", "PA_bssfp2lge_u3plus_r101_RUSH-ADA_png")

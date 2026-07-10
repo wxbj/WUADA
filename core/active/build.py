@@ -308,3 +308,4 @@ def RandomSelectionRegion(cfg, tgt_epoch_loader):
                 futures = [executor.submit(process_single, i) for i in range(len(origin_mask))]
                 for f in futures:
                     f.result()
+

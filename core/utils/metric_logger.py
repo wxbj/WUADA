@@ -60,3 +60,4 @@ class MetricLogger(object):
                 "{}: {:.8f} ({:.8f})".format(name, meter.median, meter.global_avg)
             )
         return self.delimiter.join(loss_str)
+

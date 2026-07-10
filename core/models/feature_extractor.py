@@ -9,3 +9,4 @@ class resnet_feature_extractor(nn.Module):
 
     def forward(self, x):
         return self.backbone(x)
+

@@ -47,3 +47,4 @@ def convert_npy_to_png(input_dir, output_dir):
 convert_npy_to_png("MM-WHS", "MM-WHS-png")
 convert_npy_to_png("MS-CMRSeg", "MS-CMRSeg-png")
 
+

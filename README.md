@@ -6,8 +6,6 @@
 ## 📢 News
 - **[2026-06]** Our paper has been accepted! The complete training and testing code is now released.
 # Overview
-
-***
 We propose an algorithm for cross-modality image segmentation named Active Domain Adaptation via Structural-Prior
 Warm-Start and Region Uncertainty (WUADA). Our method first constructs a structural-prior during a warm-start phase to
 stabilize the model's uncertainty estimation early in training. This facilitates a more accurate delineation of the
@@ -18,9 +16,6 @@ informative foreground boundaries.
 ![Overall Framework.png](resources/Overall%20Framework.png)
 
 # Usage
-
-***
-
 ## 1. Prerequisites
 
 - python 3.9.21
@@ -43,30 +38,29 @@ informative foreground boundaries.
 
 - Download datasets [MS-CMESeg](https://zmiclab.github.io/zxh/0/mscmrseg19/data.html)
   and [MM-WHS](https://zmiclab.github.io/zxh/0/mmwhs/)
-- The structure of the dataset should be as follows:
-  ```
-  ├── datasets/
-  │   ├── MM-WHS/
-  │   │   ├── ct/
-  │   │   ├── mr/
-  │   │   ├── generate_image_list.py
-  │   │   └── generate_label_info.py
-  │   └── MS-CMRSeg/
-  │       ├── bSSFP/
-  │       ├── LGE/
-  │       ├── generate_image_list.py
-  │       └── generate_label_info.py
-  │
-  └── originData/
-      ├── MM-WHS/ 
-      │   ├── ct_train/
-      │   └── mr_train/
-      ├── MS-CMRSeg/ 
-      │   ├── bSSFP/
-      │   └── LGE/
-      ├── mm-whs.py
-      └── ms_cmrseg.py
-  ```
+  - The structure of the dataset should be as follows:
+    ```
+    ├── datasets/
+    │   ├── MM-WHS/
+    │   │   ├── ct/
+    │   │   └── mr/
+    │   ├── MS-CMRSeg/
+    │   │   ├── bSSFP/
+    │   │   └── LGE/
+    │   ├── 1_union.py
+    │   ├── 2_split_train_val.py
+    │   ├── 3_generate_image_list.py
+    │   └── 4_generate_label_info.py
+    └── originData/
+        ├── MM-WHS/ 
+        │   ├── ct_train/
+        │   └── mr_train/
+        ├── MS-CMRSeg/ 
+        │   ├── bSSFP/
+        │   └── LGE/
+        ├── mm-whs.py
+        └── ms_cmrseg.py
+    ```
 - The execution process of data preprocessing:
 
     1. **Organize Raw Data**
@@ -82,7 +76,7 @@ informative foreground boundaries.
         - **Slicing**: Convert 3D volumes into 2D slices along the coronal plane.
         - **Channel Stacking**: Stack three adjacent slices (`[t-1, t, t+1]`) to create a 3-channel input.
         - **Normalization**: Apply Z-score normalization to the foreground region.
-        - **Splitting & Saving**: Save the processed slices as `.npy` files, splitting them into an 80%/20% train/test
+        - **Splitting & Saving**: Save the processed slices as `.npy` files, splitting them into an 80%/20% train-val/test
           ratio.
 
     3. **Preprocess the MS-CMRSeg Dataset**
@@ -90,16 +84,33 @@ informative foreground boundaries.
        Run the `ms_cmrseg.py` script for preprocessing.
         - **Note**: The process is identical to the MM-WHS pipeline, except the ROI size is set to `192x192x192`.
 
-    4. **Generate Image List**
+    4. **Reset Dataset Splits**
 
-       Run the `datasets/generate_image_list.py` script to generate the list of image names required for training.
+       Run the `1_union.py` script to merge existing validation sets back into the training directories to ensure a clean state before splitting.
 
-    5. **Calculate Class Weights**
+    5. **Generate Train and Validation Splits**
 
-       Run the `generate_label_info.py` script to calculate an importance score for each label to address class
-       imbalance.
+       Run the `2_split_train_val.py` script to split the unified training data into new train and validation sets based on predefined patient indices for cross-validation.
 
-## 4. Illustration of a 4-fold Split
+    6. **Generate Image List and Compute Statistics**
+
+       Run the `3_generate_image_list.py` script to generate the list of image paths required for training and compute the dataset's RGB mean and standard deviation.
+
+    7. **Calculate Class Weights**
+
+       Run the `4_generate_label_info.py` script to calculate an importance score for each label to address class imbalance.
+## 4. Train and Test
+
+We provide comprehensive bash scripts to reproduce all the experiments presented in our paper. You can find the complete list of commands in `scripts/scripts.sh`. 
+
+Below are two examples of how to run the training and testing pipelines:
+
+**Example 1: Train and test the WUADA (Region Active) model on CT->MR**
+
+    python train.py -cfg configs/RA_ct2mr_u3plus_r101_WUADA.yaml
+    python test.py -cfg configs/RA_ct2mr_u3plus_r101_WUADA.yaml
+
+## 5. Illustration of a 4-fold Split
 
 - MM-WHS CT<->MR (Split by case)
 
@@ -119,8 +130,7 @@ informative foreground boundaries.
 | 3    | 6-25，36-45 | 26-35 | 1-5  |
 | 4    | 6-35       | 36-45 | 1-5  |
 
-## 5. Model Zoo
-
+## 6. Model Zoo
 We will put our model checkpoints
 here [[Google Drive](https://drive.google.com/drive/folders/1xE2yAw1KTx2-9CUIXYUCPPCvJrCnB8mV?usp=drive_link)] [[百度网盘](https://pan.baidu.com/s/1fpavQeGI0J6ncwrb3-A2tQ?pwd=1234)] (
 提取码1234).
@@ -169,12 +179,6 @@ here [[Google Drive](https://drive.google.com/drive/folders/1xE2yAw1KTx2-9CUIXYU
 | 2    | 1% region    | 88.0     | 1.6        | source_free/region_1    |
 | 3    | 5% region    | 88.1     | 1.5        | source_free/region_5    |
 
-## 6. Train and test
-
-- The 'scripts. sh' under 'scripts' stores the scripts for running all the models in the appeal.
-
 # Acknowledgements
-
-***
 This project is based on the open-source project: [RIPU](https://github.com/BIT-DA/RIPU). We thank their authors for
 making the source  code publically available.

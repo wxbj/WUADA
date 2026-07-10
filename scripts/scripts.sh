@@ -69,14 +69,3 @@ python test.py -cfg configs/source_free_RA_ct2mr_u3plus_r101_WUADA.yaml
 python train_source_free.py -cfg configs/source_free_PA_ct2mr_u3plus_r101_WUADA.yaml
 # test
 python test.py -cfg configs/source_free_PA_ct2mr_u3plus_r101_WUADA.yaml
-
-
-# train RA:bSSFP->LGE
-python train_source_free.py -cfg configs/source_free_RA_bssfp2lge_u3plus_r101_WUADA.yaml
-# test
-python test.py -cfg configs/source_free_RA_bssfp2lge_u3plus_r101_WUADA.yaml
-
-# train PA::bSSFP->LGE
-python train_source_free.py -cfg configs/source_free_PA_ct2mr_u3plus_r101_WUADA.yaml
-# test
-python test.py -cfg configs/source_free_PA_bssfp2lge_u3plus_r101_WUADA.yaml

@@ -172,3 +172,4 @@ class ElasticDeformation(object):
                 label_def[..., c] = map_coordinates(label_np[..., c], coords, order=0, mode='reflect')
 
         return image_def.astype(np.float32, copy=False), label_def.astype(np.uint8, copy=False)
+

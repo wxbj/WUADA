@@ -58,3 +58,4 @@ if __name__ == "__main__":
     # split('MS-CMRSeg', 'bSSFP', ['images', 'labels'], indices=[15, 16, 17, 18, 19])
     # split('MS-CMRSeg', 'LGE', ['images', 'labels'], indices=[15, 16, 17, 18, 19])
 
+
